@@ -1,14 +1,15 @@
 ﻿// 1st task
 function parseCount(num) {
-  if (parseFloat(num) === NaN) {
-  throw new Err("Невалидное значение");
+  const a = parseFloat(num);
+  if (a.isNan()) {
+    throw new Error("Невалидное значение");
   }
-  return parseFloat(num)
-
+  return a;
 }
+
 function validateCount(params) {
   try {
-    parseCount(num)
+    return parseCount(params)
   } catch (err) {
     return err;
   }
@@ -22,7 +23,7 @@ class Triangle {
     this.b = b;
     this.c = c;
 
-    if ((this.a + this.b < this.c) || (this.a + this.c < this.b) || (this.b + this.c < this.a)) {
+    if ((a + b < c) || (a + c < b) || (b + c < a)) {
       throw new Error("Треугольник с такими сторонами не существует");
     }
   }
@@ -32,13 +33,14 @@ class Triangle {
   }
 
   get area() {
-    return Math.sqrt((this.perimetr / 2) * (this.perimetr / 2 - this.a) * (this.perimetr / 2 - this.b) * (this.perimetr / 2 - this.c)).toFixed(3)
+    const polyper = this.perimetr / 2;
+    return Math.sqrt(polyper * (polyper - this.a) * (polyper - this.b) * (polyper - this.c)).toFixed(3)
   }
 }
 
 function getTriangle(a,b,c) {
   try {
-    return new getTriangle(a,b,c) 
+    return new Triangle(a,b,c) 
   } catch(err) {
     return {
       get area () {
