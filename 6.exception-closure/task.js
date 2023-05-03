@@ -1,7 +1,7 @@
 ﻿// 1st task
 function parseCount(num) {
   const a = parseFloat(num);
-  if (a.isNan()) {
+  if (isNaN(a)) {
     throw new Error("Невалидное значение");
   }
   return a;
@@ -28,13 +28,13 @@ class Triangle {
     }
   }
 
-  get perimetr() {
+  get perimeter() {
     return this.a + this.b + this.c
   }
 
   get area() {
-    const polyper = this.perimetr / 2;
-    return Math.sqrt(polyper * (polyper - this.a) * (polyper - this.b) * (polyper - this.c)).toFixed(3)
+    const polyper = this.perimeter / 2;
+    return Number(Math.sqrt(polyper * (polyper - this.a) * (polyper - this.b) * (polyper - this.c)).toFixed(3))
   }
 }
 
