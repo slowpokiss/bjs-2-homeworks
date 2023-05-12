@@ -12,7 +12,7 @@ class AlarmClock {
     if (this.alarmCollection.some(el => el.time === time)) {
       console.warn('Уже присутствует звонок на это же время')
     } 
-    this.alarmCollection.push({callback, time, cancall: true})
+    this.alarmCollection.push({callback, time, canCall: true})
   }
 
   removeClock (time) {
@@ -24,7 +24,7 @@ class AlarmClock {
   }
 
   start() {
-    if (!this.intervalId) {
+    if (this.intervalId) {
       return;
     }
     this.intervalId = setInterval(() => {
